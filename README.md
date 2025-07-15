@@ -17,6 +17,14 @@ These video files were reencoded video only with H.264 and Vorbis audio is kept.
 
 So please copy to the game folder of HAHCF from the video folder.
 
+Automatic command used for encoding of FFmpeg:
+
+```
+ffmpeg -i CheeseFestival.ogv -c:v libx264 -profile:v main -level 3 -crf 18 -c:a copy -preset placebo -bsf:v "filter_units=remove_types=6" -fflags +bitexact -flags:v +bitexact -flags:a +bitexact -map_metadata -1 -vsync cfr -f mp4 CheeseFestival1.ogv
+
+ffmpeg -i ENDING.ogv -c:v libx264 -profile:v main -level 3 -crf 18 -c:a copy -preset placebo -bsf:v "filter_units=remove_types=6" -fflags +bitexact -flags:v +bitexact -flags:a +bitexact -map_metadata -1 -vsync cfr -f mp4 Ending1.ogv
+```
+
 ## Manual
 
 If you don't want to grab video folder with pre-encoded:
