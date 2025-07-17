@@ -15,16 +15,34 @@ Since Ren'Py 7.4, it could **crash** due to memory increasing up over 2 GB durin
 
 To reduce assets, we don't actually need an OGV cutscenes for Android builds, because it's only for PC platforms and also could still work for since Ren'Py 7.4 optional.
 
-Most common easy in File Manager or Windows Explorer of graphical window is to find OGV video file extensions and then delete manually.
+Most common easy in File Manager or Windows Explorer of graphical window is to find OGV video file extensions, make new directory called `.unused` and move unused assets to `.unused`. Or alternatively, you could delete unused OGV cutscenes for your choice.
 
 Or you could do in terminal:
+
+Make a new directory called `.unused` and move files (recommended method):
+
+```
+
+# Windows
+cd HAHCF\game
+mkdir .unused
+move *.ogv .unused
+
+# macOS/Linux
+cd HAHCF/game
+mkdir .unused
+mv *.ogv .unused
+rm HAHCF/game/*.ogv
+```
+
+Alternative method is deletion:
 
 ```
 # Windows
 del /S HAHCF\game\*.ogv
 
 # macOS/Linux
-rm -f HAHCF/game/*.ogv
+rm HAHCF/game/*.ogv
 ```
 
 
