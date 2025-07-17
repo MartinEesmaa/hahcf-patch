@@ -1,10 +1,35 @@
 # hahcf-patch
 
-HAHCF patches to fix cutscene bugs
+HAHCF patches to reduce unused assets & fix cutscene bugs
 
 This can fix the bug for Android, iOS and Web by reencoding cutscenes.
 
-## Automatic
+## Android
+
+If you targetting Android platform:
+
+Please make sure to grab Ren'Py 7.3.5 stable version for modern builds
+or/and legacy builds for Ren'Py 7.0.1 stable version.
+
+Since Ren'Py 7.4, it could **crash** due to memory increasing up over 2 GB during play game for unexpected reason for Android builds.
+
+To reduce assets, we don't actually need an OGV cutscenes for Android builds, because it's only for PC platforms and also could still work for since Ren'Py 7.4 optional.
+
+Most common easy in File Manager or Windows Explorer of graphical window is to find OGV video file extensions and then delete manually.
+
+Or you could do in terminal:
+
+```
+# Windows
+del /S HAHCF\game\*.ogv
+
+# macOS/Linux
+rm -f HAHCF/game/*.ogv
+```
+
+
+
+## Automatic (deprecated)
 
 This can be found for video folder with one file called:
 
@@ -25,7 +50,7 @@ ffmpeg -i CheeseFestival.ogv -c:v libx264 -profile:v main -level 3 -crf 18 -c:a 
 ffmpeg -i ENDING.ogv -c:v libx264 -profile:v main -level 3 -crf 18 -c:a copy -preset placebo -bsf:v "filter_units=remove_types=6" -fflags +bitexact -flags:v +bitexact -flags:a +bitexact -map_metadata -1 -vsync cfr -f mp4 Ending1.ogv
 ```
 
-## Manual
+## Manual (deprecated)
 
 If you don't want to grab video folder with pre-encoded:
 
