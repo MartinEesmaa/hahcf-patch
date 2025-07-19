@@ -32,7 +32,6 @@ move *.ogv .unused
 cd HAHCF/game
 mkdir .unused
 mv *.ogv .unused
-rm HAHCF/game/*.ogv
 ```
 
 Alternative method is deletion:
@@ -45,7 +44,54 @@ del /S HAHCF\game\*.ogv
 rm HAHCF/game/*.ogv
 ```
 
+## Mac OS X (for PowerPC users)
 
+If you want to play the game on your Mac OS PowerPC version.
+
+Only seperated package of Macintosh PowerPC Ren'Py was supported between 6.13 and 6.14.1.
+
+Grab Ren'Py Macintosh PPC package [here](https://renpy.org/dl/6.13.8/renpy-ppc.zip)
+
+### Patch:
+
+The patch file can be found on [macos-ppc/environment.txt](macos-ppc/environment.txt).
+
+Also please rename from renpy.app to renpy-temp.app
+and then rename it from renpy-ppc.app into renpy.app, so it can build on Windows & Linux.
+
+Please note when building on Mac by running renpy-ppc.app (as renamed to renpy.app)
+can only work between Mac OS X 10.4.4 and 10.6.8 
+for emulating PowerPC for Intel host, also includes Mac OS 10.4 to 10.5.8 for PowerPC.
+
+Windows run: renpy.exe / Linux run: renpy.sh
+
+Run renpy-temp.app for only Intel x86 macOS computers.
+
+or run renpy.app for only macOS PowerPC computers.
+
+Finally run the program, select the project and then build distributions.
+
+### Explanation:
+
+Create a environment text file for switch renderer to Software in Ren'Py.
+
+```
+echo 'RENPY_RENDERER="sw"' > environment.txt
+```
+
+This will avoid crash to avoid automatic detection 
+and forces switch to Software renderer rather than OpenGL.
+
+Using OpenGL on Mac OS X PowerPC version can crash for some users.
+It is best to use software renderer, but it is very slow and no choice to turn OpenGL on.
+
+After that, copy the environment.txt file to the root folder of HAHCF.
+
+```
+cp environment.txt HAHCF/
+```
+
+Once you done copying environment.txt file to HAHCF project, you need Ren'Py 6.13.8 with PPC ZIP compressed file (tested) and you need to rename it by two times.
 
 ## Automatic (deprecated)
 
