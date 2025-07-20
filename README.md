@@ -44,6 +44,43 @@ del /S HAHCF\game\*.ogv
 rm HAHCF/game/*.ogv
 ```
 
+It is ready to go and build distributions for Android.
+
+See the below to build seperate builds to keep stable and compatibility.
+
+Modern build package & Ren'Py version: org.martineesmaa.hahcf (7.3.5)
+
+Legacy build package & Ren'Py version: org.martineesmaa.hahcflegacy (7.0.1)
+
+Note if you getting error of not found packages for older versions than Ren'Py 7.3.5:
+
+```
+* What went wrong:
+Could not resolve all files for configuration ':app:releaseRuntimeClasspath'.
+Searched in the following locations :
+file:/home/martineesmaa/Downloads/renpy-7.0.1-sdk/rapt/Sdk/extras/m2repository/com/danikula/expansion/expansion/1.3.4/expansion-1.3.4.pom
+file:/home/martineesmaa/Downloads/renpy-7.0.1-sdk/rapt/Sdk/extras/m2repository/com/danikula/expansion/expansion/1.3.4/expansion-1.3.4.aar
+file:/home/martineesmaa/Downloads/renpy-7.0.1-sdk/rapt/Sdk/extras/m2repository/com/danikula/expansion/license/1.7.0/license-1.7.0.pom
+file:/home/martineesmaa/Downloads/renpy-7.0.1-sdk/rapt/Sdk/extras/m2repository/com/danikula/expansion/license/1.7.0/license-1.7.0.pom
+file:/home/martineesmaa/Downloads/renpy-7.0.1-sdk/rapt/Sdk/extras/m2repository/com/danikula/expansion/zip/1.2.1/zip-1.2.1.pom
+file:/home/martineesmaa/Downloads/renpy-7.0.1-sdk/rapt/Sdk/extras/m2repository/com/danikula/expansion/zip/1.2.1/zip-1.2.1.aar
+```
+
+See the folder with Android old packages [android-old](android-old), taken from web.archive.org and copy six files to each three directories:
+
+Please download six files into rapt folder from renpy-7.0.1-sdk.
+
+Make sure you're in rapt folder behind renpy-7.0.1-sdk folder example:
+
+```
+mkdir -p Sdk/extras/m2repository/com/danikula/expansion/expansion/1.3.4/
+mkdir -p Sdk/extras/m2repository/com/danikula/expansion/license/1.7.0/
+mkdir -p Sdk/extras/m2repository/com/danikula/expansion/zip/1.2.1/
+cp expansion-1.3.4* Sdk/extras/m2repository/com/danikula/expansion/expansion/1.3.4/
+cp license-1.7.0* Sdk/extras/m2repository/com/danikula/expansion/license/1.7.0/
+cp zip-1.2.1* Sdk/extras/m2repository/com/danikula/expansion/zip/1.2.1/
+```
+
 ## Mac OS X (for PowerPC users)
 
 If you want to play the game on your Mac OS PowerPC version.
