@@ -130,6 +130,41 @@ cp environment.txt HAHCF/
 
 Once you done copying environment.txt file to HAHCF project, you need Ren'Py 6.13.8 with PPC ZIP compressed file (tested) and you need to rename it by two times.
 
+## iOS
+
+If you targetting to iOS systems, you need Xcode to run on macOS only (tested) or possible Darling to use macOS CLI on Windows & Linux.
+
+This has been tested using Ren'Py 7.3.5.606 with Xcode 6.1.1 on Mac OS X 10.9.5.
+
+First thing you have to rename name from identity and type to avoid invalid character names.
+
+Go to Build settings, select levels and scroll down until you find `PRODUCT_BUNDLE_IDENTIFIER`.
+
+Change into `org.martineesmaa.hahcflegacy` for legacy build, modern: `org.martineesmaa.hahcf`.
+
+If you don't want to code sign it, you can select *Don't Code Sign* on Code Signing Identity.
+
+### Only legacy build development target
+
+It allows to target development of iOS 6.0 and over on earlier Xcode versions, 
+but it is hidden with older versions can be found on iOS Deployment Target at Build Settings.
+
+I selected iOS 4.3 for deployment target on iOS 8.1 SDK to support more devices.
+
+### Build iOS platform
+
+When you see the icon next arrow to device on top left, change into iOS Generic Device or Build Only.
+
+In Xcode, go to Product and then Archive. Select it and open in Finder.
+
+Go to Products/Applications and you will see result build app, so has to be done by creating Payload folder and pasting app into Payload folder and then compress it.
+
+See the more information answer resource [there](https://stackoverflow.com/a/25396370).
+
+After you done compressing Payload folder, rename into something like HAHCF.ipa on macOS and ready to go sideload.
+
+Remember: Normally Apple only allows signed apps to iOS systems, but third party non-jailbroken sideloader apps and jailbroken devices can sideload signed & unsigned apps to iOS systems.
+
 ## Automatic (deprecated)
 
 This can be found for video folder with one file called:
