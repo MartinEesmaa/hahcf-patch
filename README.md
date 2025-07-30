@@ -165,6 +165,10 @@ After you done compressing Payload folder, rename into something like HAHCF.ipa 
 
 Remember: Normally Apple only allows signed apps to iOS systems, but third party non-jailbroken sideloader apps and jailbroken devices can sideload signed & unsigned apps to iOS systems.
 
+## Cutscenes compatible
+
+See the documentation in video folder: [README](video/README.md)
+
 ## Automatic (deprecated)
 
 This can be found for video folder with one file called:
