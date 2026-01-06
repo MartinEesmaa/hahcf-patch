@@ -22,7 +22,6 @@ Or you could do in terminal:
 Make a new directory called `.unused` and move files (recommended method):
 
 ```
-
 # Windows
 cd HAHCF\game
 mkdir .unused
@@ -142,7 +141,23 @@ Go to Build settings, select levels and scroll down until you find `PRODUCT_BUND
 
 Change into `org.martineesmaa.hahcflegacy` for legacy build, modern: `org.martineesmaa.hahcf`.
 
-If you don't want to code sign it, you can select *Don't Code Sign* on Code Signing Identity.
+If you don't want to code sign it, you can select *Don't Code Sign* on Code Signing Identity. (AltStore app does not allow unsigned apps inside iOS device and jailbroken devices yet, but except AltServer)
+
+Please take it note before building, you must sign the app to process build order to install with Altstore or any other third party apps. 
+
+If you have Apple Developer account active, then you can select your own in Signing tab on Xcode.
+
+Tutorial stackoverflow (please note it's very too old): [link](https://stackoverflow.com/questions/9350972/how-to-make-an-ipa-on-xcode-4-3/10171462#10171462)
+
+If you don't have it, that's okay you need to configure SDKSettings.plist file which can be found from inside Xcode app contents:
+
+```
+Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/
+```
+
+Please replace `CODE_SIGNING_REQUIRED` to NO under `DefaultProperties`.
+
+After that, restart Xcode and try export with AD-HOC code signed on it.
 
 ### Only legacy build development target
 
