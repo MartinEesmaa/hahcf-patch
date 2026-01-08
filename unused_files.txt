@@ -6,9 +6,30 @@
 56 still my little girl.mp3
 57 so much i don't know.mp3
 65 curtain call.mp3
+All Things Pink Skinny.ttf
+Arnold 74.png
+arnoldopening.png
 Bumping into Arnold.mp3
+boy.png
+boy1.png
+boy2.png
+boyandagirl.png
 caf-2.mp3
+clickclick.wav
+CG21.png
+CG22.png
+CG30.png
+cursor.png
 downtown-2.mp3
+enter.wav
+GBACK.png
+Georgia Belle.ttf
+girl1.png
+girl2.png
+helga new mix.wav
+helgaopening.png
+icons3.ico
+icons4.ico
 Jim Lang - Corny.mp3
 Jim Lang - Dangerous Lumber.mp3
 Jim Lang - Hammer and Tongs.mp3
@@ -23,27 +44,6 @@ Jim Lang - Meet Angel.mp3
 Jim Lang - Parents Day Ending Credits.mp3
 Jim Lang - Time To Leave.mp3
 Jim Lang - Why.mp3
-clickclick.wav
-enter.wav
-helga new mix.wav
-All Things Pink Skinny.ttf
-Arnold 74.png
-arnoldopening.png
-boy.png
-boy1.png
-boy2.png
-boyandagirl.png
-CG21.png
-CG22.png
-CG30.png
-cursor.png
-GBACK.png
-Georgia Belle.ttf
-girl1.png
-girl2.png
-helgaopening.png
-icons3.ico
-icons4.ico
 Maian.TTF
 phoebeop2.png
 phoebevideo.png
