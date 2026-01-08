@@ -1,4 +1,4 @@
-#!/usr/bin/env sh -e
+#!/bin/bash
 
 # Clean up of unused files assets and move into .unused folder
 # Remember repository root (where this script was invoked)
@@ -20,20 +20,15 @@ fi
 echo "Cleaning unused files for: $PLATFORM"
 
 # Backwards-compatible platform-based cleanup (basic heuristics)
-if [ "$PLATFORM" = "android" ]; then
-    # Android: move ogv files and swap mp4s
-    UNUSED_FILES=("*.ogv")
-elif [ "$PLATFORM" = "ios" ] || [ "$PLATFORM" = "web" ]; then
-    # iOS/web: move ogv files and swap mp4s
-    UNUSED_FILES=("*.ogv")
-elif [ "$PLATFORM" = "desktop" ]; then
-    # Desktop: keep ogv files, move all mp4s only
-    UNUSED_FILES=()
-else
-    echo "Unknown platform: $PLATFORM"
-    echo "Usage: ./clean.sh [android|ios|web|desktop]"
-    exit 1
-fi
+case "$PLATFORM" in
+    android|ios|web|desktop)
+        ;;
+    *)
+        echo "Unknown platform: $PLATFORM"
+        echo "Usage: ./clean.sh [android|ios|web|desktop]"
+        exit 1
+        ;;
+esac
 
 # Move matched files or directories into .unused/ (operate only within `game`)
 TARGET="$REPO_ROOT/.unused"
@@ -128,9 +123,10 @@ if [ "$PLATFORM" = "desktop" ]; then
     done
 fi
 
-for FILE in "${UNUSED_FILES[@]}"; do
-    # Use find to match patterns inside game and avoid scanning outside
-    find game -maxdepth 5 -type f \( -iname "$FILE" -o -name "$FILE" \) -print0 | while IFS= read -r -d '' SRC; do
+# Move OGV files for android/ios/web (desktop keeps them)
+if [ "$PLATFORM" = "android" ] || [ "$PLATFORM" = "ios" ] || [ "$PLATFORM" = "web" ]; then
+    echo "Moving OGV files to ./.unused"
+    find game -maxdepth 5 -type f -iname "*.ogv" -not -path "game/.unused/*" -print0 | while IFS= read -r -d '' SRC; do
         BASENAME=$(basename "$SRC")
         DEST="$TARGET/$BASENAME"
         DISPLAY_DEST="./.unused/$BASENAME"
@@ -141,25 +137,34 @@ for FILE in "${UNUSED_FILES[@]}"; do
         echo "Moving '$SRC' -> $DISPLAY_DEST"
         mv "$SRC" "$DEST"
     done
-done
+fi
 
 # After platform specified cleanup, clean all remaining unused assets.
 if [ -f "$REPO_ROOT/unused_files.txt" ]; then
     echo "Also processing list: unused_files.txt"
     while IFS= read -r FNAME || [ -n "$FNAME" ]; do
+        # Remove carriage returns (for Windows line endings)
+        FNAME="${FNAME%$'\r'}"
+        
+        # Skip empty lines and comments
         case "$FNAME" in
             ''|\#*) continue ;;
         esac
-        find game -type f -iname "$FNAME" -not -path "game/.unused/*" -print0 | while IFS= read -r -d '' SRC; do
-            BASENAME=$(basename "$SRC")
-            DEST="$TARGET/$BASENAME"
-            DISPLAY_DEST="./.unused/$BASENAME"
-            if [ -e "$DEST" ]; then
-                echo "Skipping move, destination exists: $DISPLAY_DEST"
-                continue
+        
+        # Try to find file case-insensitively in game directory
+        # Use find with -iname for case-insensitive matching
+        find game -maxdepth 5 -type f -iname "$FNAME" -not -path "game/.unused/*" -print0 | while IFS= read -r -d '' SRC; do
+            if [ -n "$SRC" ]; then
+                BASENAME=$(basename "$SRC")
+                DEST="$TARGET/$BASENAME"
+                DISPLAY_DEST="./.unused/$BASENAME"
+                if [ -e "$DEST" ]; then
+                    echo "Skipping move, destination exists: $DISPLAY_DEST"
+                    continue
+                fi
+                echo "Moving '$SRC' -> $DISPLAY_DEST"
+                mv "$SRC" "$DEST"
             fi
-            echo "Moving '$SRC' -> $DISPLAY_DEST"
-            mv "$SRC" "$DEST"
         done
     done < "$REPO_ROOT/unused_files.txt"
 fi
