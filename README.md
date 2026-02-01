@@ -184,6 +184,10 @@ Remember: Normally Apple only allows signed apps to iOS systems, but third party
 
 See the documentation in video folder: [README](video/README.md)
 
+## Replace upsampled soundtrack audio by new audio
+
+See the documentation in audio folder: [README](audio/README.md)
+
 ## Automatic (deprecated)
 
 This can be found for video folder with one file called:
