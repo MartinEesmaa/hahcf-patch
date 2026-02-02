@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<livearea style="a1" format-ver="01.00" content-rev="1">
+  <livearea-background>
+    <image>bg.png</image>
+  </livearea-background>
+	
+  <gate>
+    <startup-image>startup.png</startup-image>
+  </gate>
+
+  <frame id="frame1">
+    <liveitem> <lang>en</lang>
+      <image origin="frame">web.png</image>
+      <target>http://github.com/MartinEesmaa/HAHCF</target>  
+    </liveitem>
+    <liveitem> <lang>en-gb</lang>
+      <image origin="frame">web.png</image>
+      <target>http://github.com/MartinEesmaa/HAHCF</target>  
+    </liveitem>
+    <liveitem> <lang>ja</lang>
+      <image origin="frame">web.png</image>
+      <target>http://github.com/MartinEesmaa/HAHCF</target>  
+    </liveitem>
+  </frame>
+
+</livearea>
